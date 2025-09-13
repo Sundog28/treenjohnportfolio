@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+.panel { @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-md; }
+.holo::before { content:""; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(0,229,255,.12), transparent 40%), linear-gradient(315deg, rgba(168,85,247,.10), transparent 50%);
+  pointer-events:none; border-radius: inherit;
+}
+body[data-matrix="true"] .hide-in-matrix { display:none; }
