@@ -1,0 +1,18 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+
+:root {
+  --bg:#0f1115; --card:#141822; --text:#eaeefb; --accent:#d4af37; --ring:rgba(212,175,55,.4);
+}
+html[data-theme="night"] {
+  --bg:#0a0a0c; --card:#0f0f12; --text:#e6e6f0; --accent:#9c8cff; --ring:rgba(156,140,255,.4);
+}
+html,body,#root{height:100%;background:var(--bg);color:var(--text);}
+a{color:var(--accent);}
+.card {
+  @apply rounded-xl backdrop-blur p-5 shadow-md ring-1 ring-transparent transition hover:ring-[var(--ring)];
+  background-color: color-mix(in srgb, var(--card) 90%, transparent);
+}
+.btn{@apply inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium ring-1 ring-transparent hover:ring-[var(--ring)] transition;}
+.btn-primary{box-shadow:0 0 0 1px var(--ring), 0 0 20px var(--accent);}
+.prose :where(a){color:var(--accent)}
+@media print{nav,footer,.btn{display:none} body{background:white;color:black}}

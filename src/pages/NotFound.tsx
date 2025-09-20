@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
-export default function NotFound() {
+import React from "react";
+import { Link } from "react-router-dom";
+export default function NotFound(){
   return (
-    <section className="page text-center">
-      <h1 className="text-5xl font-bold text-[color:var(--accent)]">404</h1>
-      <p className="mt-2">Lost in the Matrix…</p>
-      <Link to="/" className="mt-4 inline-block btn">Return Home</Link>
-    </section>
-  )
+    <div className="text-center">
+      <h1 className="text-5xl font-bold">404</h1>
+      <p className="mt-2 text-[var(--text)]/80">That page went exploring.</p>
+      <Link className="btn btn-primary mt-4" to="/">Go Home</Link>
+    </div>
+  );
 }

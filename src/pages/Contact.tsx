@@ -1,27 +1,23 @@
-export default function Contact() {
+import React,{useState} from "react";
+export default function Contact(){
+  const [sent,setSent]=useState(false);
+  const onSubmit:React.FormEventHandler<HTMLFormElement>=(e)=>{
+    e.preventDefault(); const d=new FormData(e.currentTarget);
+    const subject=encodeURIComponent(`[Portfolio] ${d.get("subject")}`);
+    const body=encodeURIComponent(`From: ${d.get("name")} <${d.get("email")}>\n\n${d.get("message")}`);
+    window.location.href=`mailto:treenjohnm@gmail.com?subject=${subject}&body=${body}`; setSent(true);
+  };
   return (
-    <section className="page">
-      <h2 className="text-3xl font-bold mb-4">Contact</h2>
-      <p>Email: <a href="mailto:treenjohnm@gmail.com" className="link">treenjohnm@gmail.com</a></p>
-      <form action="https://formspree.io/f/yourformid" method="POST" className="mt-4 space-y-3 max-w-md">
-        <input type="text" name="name" placeholder="Your Name" className="border p-2 w-full rounded" required />
-        <input type="email" name="email" placeholder="Your Email" className="border p-2 w-full rounded" required />
-        <textarea name="message" placeholder="Your Message" className="border p-2 w-full rounded" required />
-        <div className="flex gap-2">
-          <button type="submit" className="btn btn-primary">Send</button>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => navigator.clipboard.writeText('treenjohnm@gmail.com')}>
-            Copy Email
-          </button>
-        </div>
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+      <form onSubmit={onSubmit} className="card space-y-3 max-w-xl">
+        <input name="name" required placeholder="Your name" className="px-3 py-2 rounded bg-card ring-1 ring-white/10 w-full"/>
+        <input name="email" required type="email" placeholder="you@example.com" className="px-3 py-2 rounded bg-card ring-1 ring-white/10 w-full"/>
+        <input name="subject" required placeholder="Subject" className="px-3 py-2 rounded bg-card ring-1 ring-white/10 w-full"/>
+        <textarea name="message" required rows={6} placeholder="Message..." className="px-3 py-2 rounded bg-card ring-1 ring-white/10 w-full"></textarea>
+        <button className="btn btn-primary" type="submit">Send</button>
+        {sent && <p className="text-xs text-[var(--text)]/70">Your email client should open. If not, email me at treenjohnm@gmail.com.</p>}
       </form>
-      <div className="mt-4 space-x-4">
-        <a className="link" href="https://github.com/Sundog28" target="_blank">GitHub</a>
-        <a className="link" href="http://linkedin.com/in/john-treen-629a81159" target="_blank">LinkedIn</a>
-        <a className="link" href="https://Sundog28.github.io" target="_blank">Portfolio</a>
-      </div>
-    </section>
-  )
+    </div>
+  );
 }

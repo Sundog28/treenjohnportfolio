@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://treenjohnportfolio.com/sitemap.xml
+Sitemap: https://treenjohnportfoliocom.vercel.app/sitemap.xml

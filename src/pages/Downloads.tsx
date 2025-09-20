@@ -1,12 +1,15 @@
-export default function Downloads() {
+import React from "react";
+const files=[
+  {name:"Mini Résumé (PDF)", href:"/resume/John_Treen_Ultimate_Resume_Mini.pdf"},
+  {name:"Full Résumé (PDF)", href:"/resume/John_Treen_Ultimate_Resume_Full.pdf"}
+];
+export default function Downloads(){
   return (
-    <section className="page">
-      <h2 className="text-3xl font-bold mb-4">Download Center</h2>
-      <ul className="space-y-2">
-        <li><a className="btn" href="/resume/resume_full.pdf" download>Résumé (Full)</a></li>
-        <li><a className="btn" href="/resume/resume_mini.pdf" download>Résumé (Mini)</a></li>
-        <li><a className="btn btn-primary" href="/resume/all-resumes.zip" download>Download All</a></li>
-      </ul>
-    </section>
-  )
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Downloads</h2>
+      <div className="grid gap-2">
+        {files.map(f=><a key={f.href} className="card hover:shadow-glow" href={f.href} download>{f.name}</a>)}
+      </div>
+    </div>
+  );
 }

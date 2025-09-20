@@ -1,17 +1,18 @@
-import { Link } from 'react-router-dom'
-export default function Home() {
+import React from "react";
+import { useRecruiter } from "../context/RecruiterContext";
+export default function Home(){
+  const { recruiterMode } = useRecruiter();
   return (
-    <section className="text-center space-y-6 page">
-      <h1 className="text-5xl font-bold glow">John Treen</h1>
-      <p className="text-lg">AI/ML & Full-Stack Developer</p>
-      <p className="text-[color:var(--muted)] max-w-xl mx-auto">
-        React • Go • Python • SQL • ML. I build polished frontends, robust APIs, and ML prototypes end-to-end.
-      </p>
-      <div className="flex justify-center gap-3">
-        <Link to="/projects" className="btn btn-primary">View Projects</Link>
-        <Link to="/resume" className="btn">Résumé</Link>
-        <Link to="/contact" className="btn">Contact</Link>
+    <div className="relative">
+      <h1 className="text-4xl md:text-5xl font-bold mb-2">Full-Stack & ML Engineer</h1>
+      <p className="text-[var(--text)]/80 mb-6">React • TypeScript • Go • Python • SQL • Tailwind</p>
+      <div className="flex flex-wrap gap-2">
+        <a className="btn btn-primary" href="https://github.com/Sundog28" target="_blank">GitHub</a>
+        <a className="btn" href="https://www.linkedin.com/in/john-treen-629a81159" target="_blank">LinkedIn</a>
+        <a className="btn" href="/projects">Projects</a>
+        <a className="btn" href="/resume">Résumé</a>
       </div>
-    </section>
-  )
+      {recruiterMode&&<div className="card mt-6">Recruiter Mode is ON — quick overview at <a href="/recruiter">/recruiter</a>.</div>}
+    </div>
+  );
 }
