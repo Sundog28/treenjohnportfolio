@@ -1,33 +1,50 @@
-import React from "react";
-import QR from "../components/QR";
-type P = {title:string; desc:string; img?:string; links:{label:string;href:string}[]; qr?:string};
-const Card:React.FC<P>=({title,desc,img,links,qr})=>(
-  <div className="card flex flex-col gap-3">
-    {img && <img src={img} alt={title} className="rounded-md object-cover w-full h-48" />}
-    <div><h3 className="text-xl font-semibold">{title}</h3><p className="text-sm text-[var(--text)]/80">{desc}</p></div>
-    <div className="flex gap-2 flex-wrap">{links.map(l=><a key={l.href} className="btn" href={l.href} target="_blank">{l.label}</a>)}</div>
-    {qr && <QR text={qr} size={120} label="Quick Link" />}
-  </div>
-);
+import React from "react"
+
+const cards = [
+  {
+    title: "SkillForge",
+    desc: "React + Tailwind skill tracker with PWA.",
+    img: "/projects/skillforge.png",
+    links: [
+      {href:"https://github.com/Sundog28/SkillForge", label:"GitHub"},
+      {href:"https://skillforge.vercel.app", label:"Live"}
+    ]
+  },
+  {
+    title: "JobTrack API",
+    desc: "Go REST API with PostgreSQL, docs & security.",
+    img: "/projects/jobtrack.png",
+    links: [
+      {href:"https://github.com/Sundog28/JobTrackAPI", label:"GitHub"},
+      {href:"https://jobtrack-api.onrender.com/docs", label:"Docs"}
+    ]
+  },
+  {
+    title: "ML Capstone — Wine Quality",
+    desc: "Streamlit app with theme toggle & RF model.",
+    img: "/projects/mlcapstone.png",
+    links: [
+      {href:"https://huggingface.co/spaces/Sundog28/MLCapstone", label:"Demo"}
+    ]
+  }
+]
+
 export default function Projects(){
-  const items:P[]=[
-    {title:"SkillForge",desc:"Learning tracker in React + Tailwind (Vercel).",
-     img:"/projects/skillforge.png",
-     links:[{label:"Repo",href:"https://github.com/Sundog28/SkillForge"}],
-     qr:"https://github.com/Sundog28/SkillForge"},
-    {title:"JobTrack API",desc:"Go REST API for job applications.",
-     img:"/projects/jobtrack.png",
-     links:[{label:"Repo",href:"https://github.com/Sundog28/JobTrackAPI"}],
-     qr:"https://github.com/Sundog28/JobTrackAPI"},
-    {title:"ML Capstone",desc:"Wine Quality classification; metrics and feature importance.",
-     img:"/projects/mlcapstone.png",
-     links:[{label:"Repo",href:"https://github.com/Sundog28/MLCapstone"}],
-     qr:"https://github.com/Sundog28/MLCapstone"},
-  ];
   return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-4">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-6">{items.map(p=><Card key={p.title}{...p}/>)}</div>
-    </div>
-  );
+    <section className="relative z-10">
+      <h2 className="text-2xl font-bold mb-4">Projects</h2>
+      <div className="grid md:grid-cols-3 gap-4">
+        {cards.map(c=>(
+          <article key={c.title} className="card">
+            <img src={c.img} alt={c.title} className="rounded mb-3 aspect-video object-cover bg-white/10"/>
+            <h3 className="font-semibold">{c.title}</h3>
+            <p className="text-white/70 mb-3">{c.desc}</p>
+            <div className="flex gap-2 flex-wrap">
+              {c.links.map(l=><a key={l.href} className="btn" href={l.href} target="_blank" rel="noreferrer">{l.label} ↗</a>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
 }

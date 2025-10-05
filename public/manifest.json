@@ -3,10 +3,9 @@
   "short_name": "Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0d0b14",
-  "theme_color": "#f5c518",
-  "description": "Portfolio of John Treen - AI/ML & Full-Stack Developer",
+  "background_color": "#0b0b0e",
+  "theme_color": "#ffd700",
   "icons": [
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/favicon.ico", "sizes": "32x32", "type": "image/x-icon" }
   ]
 }

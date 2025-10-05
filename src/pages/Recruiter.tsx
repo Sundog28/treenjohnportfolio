@@ -1,34 +1,24 @@
-import React from "react";
-import QR from "../components/QR";
+import React from "react"
+import QRCode from "qrcode.react"
+
 export default function Recruiter(){
-  const link=(t:string,h:string)=>(
-    <a className="btn" href={h} target="_blank" rel="noreferrer">{t}</a>
-  );
+  const portfolio = "https://treenjohnportfolio.com"
+  const linkedin  = "https://www.linkedin.com/in/john-treen-629a81159"
+  const email     = "mailto:treenjohnm@gmail.com"
+  const fullPDF   = "/resume/John_Treen_Ultimate_Resume_Full.pdf"
+  const miniPDF   = "/resume/John_Treen_Ultimate_Resume_Mini.pdf"
   return (
-    <div className="max-w-3xl">
-      <h2 className="text-2xl font-semibold mb-2">Recruiter Overview</h2>
-      <p className="text-[var(--text)]/80 mb-4">Quick scan: skills, projects, downloads, and QR links.</p>
-      <div className="grid md:grid-cols-2 gap-4 card">
-        <div>
-          <h3 className="font-semibold">Skills</h3>
-          <ul className="list-disc pl-5 text-sm mt-2">
-            <li>React • TS • Tailwind • Vite</li><li>Go • Python • SQL • REST</li><li>Pandas • scikit-learn • EDA</li>
-          </ul>
-          <h3 className="font-semibold mt-4">Links</h3>
-          <div className="flex flex-wrap gap-2 mt-2">
-            {link("GitHub","https://github.com/Sundog28")}
-            {link("LinkedIn","https://www.linkedin.com/in/john-treen-629a81159")}
-            {link("Portfolio","https://treenjohnportfoliocom.vercel.app")}
-            {link("Résumé (PDF)","/resume/John_Treen_Ultimate_Resume_Full.pdf")}
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4 place-items-center">
-          <QR text="https://github.com/Sundog28" label="GitHub"/>
-          <QR text="https://www.linkedin.com/in/john-treen-629a81159" label="LinkedIn"/>
-          <QR text="https://treenjohnportfoliocom.vercel.app" label="Portfolio"/>
-          <QR text="/resume/John_Treen_Ultimate_Resume_Full.pdf" label="Full Résumé"/>
-        </div>
+    <section className="relative z-10">
+      <h2 className="text-2xl font-bold mb-4">Recruiter Mode</h2>
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="card"><h3 className="font-semibold mb-2">Portfolio</h3><QRCode value={portfolio} size={128}/><a className="btn mt-3" href={portfolio}>Open Portfolio ↗</a></div>
+        <div className="card"><h3 className="font-semibold mb-2">LinkedIn</h3><QRCode value={linkedin} size={128}/><a className="btn mt-3" href={linkedin}>Open LinkedIn ↗</a></div>
+        <div className="card"><h3 className="font-semibold mb-2">Email</h3><QRCode value={email} size={128}/><a className="btn mt-3" href={email}>Email John ↗</a></div>
       </div>
-    </div>
-  );
+      <div className="grid md:grid-cols-2 gap-4 mt-4">
+        <div className="card"><h3 className="font-semibold mb-2">Full Resume</h3><QRCode value={fullPDF} size={128}/><a className="btn mt-3" href={fullPDF} download>Download Full PDF</a></div>
+        <div className="card"><h3 className="font-semibold mb-2">Mini Resume</h3><QRCode value={miniPDF} size={128}/><a className="btn mt-3" href={miniPDF} download>Download Mini PDF</a></div>
+      </div>
+    </section>
+  )
 }

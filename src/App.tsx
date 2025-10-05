@@ -1,8 +1,9 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import ParticleBackground from "./components/ParticleBackground";
+import React from "react"
+import { Outlet } from "react-router-dom"
+import NavBar from "./components/NavBar"
+import Footer from "./components/Footer"
+import ParticleBackground from "./components/ParticleBackground"
+
 export default function App(){
   return (
     <div className="min-h-screen flex flex-col">
@@ -13,5 +14,5 @@ export default function App(){
       </main>
       <Footer/>
     </div>
-  );
+  )
 }
