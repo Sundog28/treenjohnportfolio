@@ -1,9 +1,14 @@
 {
   "version": 2,
-  "builds": [{ "src": "index.html", "use": "@vercel/static-build", "config": { "distDir": "dist" } }],
-  "routes": [{ "src": "/(.*)", "dest": "/" }],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
   "framework": "vite",
-  "installCommand": "npm ci",
-  "buildCommand": "npm run build",
   "outputDirectory": "dist"
 }
