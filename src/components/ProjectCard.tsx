@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   title: string;
@@ -18,7 +19,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   repo,
 }) => {
   return (
-    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0,0,0,0.4)" }}
+      className="bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition"
+    >
       <img src={image} alt={title} className="w-full h-48 object-cover" />
       <div className="p-6">
         <h2 className="text-2xl font-bold mb-2">{title}</h2>
@@ -56,9 +63,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default ProjectCard;
-
