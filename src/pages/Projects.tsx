@@ -24,7 +24,7 @@ const projects = [
     image: "/projects/mlcapstone.png",
     tech: ["Python","Pandas","Streamlit"],
     link: "https://huggingface.co/spaces/Sundog28/MLCapstone",
-    repo: "https://github.com/Sundog28/MLCapstone"
+    repo: "https://huggingface.co/spaces/Sundog28/MLCapstone/tree/main",
   }
 ];
 
