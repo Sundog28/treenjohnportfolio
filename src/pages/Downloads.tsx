@@ -1,13 +1,11 @@
 import React from "react";
 export default function Downloads(){
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6">Downloads</h2>
-      <div className="card">
-        <ul className="space-y-2">
-          <li><a className="text-yellow-300 underline" href="/resume/resume_full.html">Resume (Full)</a></li>
-          <li><a className="text-yellow-300 underline" href="/resume/resume_mini.html">Resume (Mini)</a></li>
-        </ul>
+    <section className="grid gap-4">
+      <h2 className="text-3xl font-bold">Downloads</h2>
+      <div className="card flex flex-col gap-3">
+        <a className="btn" href="/resume/resume_full.html" download>Resume (Full) — HTML</a>
+        <a className="btn" href="/resume/resume_mini.html" download>Resume (Mini) — HTML</a>
       </div>
     </section>
   );

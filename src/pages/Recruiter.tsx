@@ -1,14 +1,16 @@
 import React from "react";
 export default function Recruiter(){
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6">Recruiter Mode</h2>
+    <section className="grid gap-4">
+      <h2 className="text-3xl font-bold">Recruiter Mode</h2>
       <div className="card">
-        <ul className="list-disc pl-5 space-y-2 text-white/80">
-          <li>One-page overview of projects with links to live demos</li>
-          <li>QR codes on Resume page for instant access</li>
-          <li>Deploy-ready configuration (Vercel) and SPA routing</li>
-          <li>Clean gold/goth futuristic theme with subtle HUD motion</li>
+        <p className="text-white/80">This page bundles fast links recruiters need:</p>
+        <ul className="list-disc ml-6 mt-2">
+          <li><a href="/resume/resume_full.html" target="_blank">Resume (Full)</a></li>
+          <li><a href="https://github.com/Sundog28" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/john-treen-629a81159" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
     </section>

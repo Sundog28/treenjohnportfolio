@@ -8,7 +8,6 @@ import Contact from "./pages/Contact";
 import Recruiter from "./pages/Recruiter";
 import Downloads from "./pages/Downloads";
 import NotFound from "./pages/NotFound";
-
 export default function AppRoutes(){
   return (
     <Routes>
