@@ -1,19 +1,16 @@
-import React from "react"
+import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
-export default function ThemeToggle(){
-  const [theme, setTheme] = React.useState<string>(()=>localStorage.getItem("jt-theme") || "day")
-  React.useEffect(()=>{
-    const attr = theme === "day" ? "" : theme
-    if(attr) document.documentElement.setAttribute("data-theme", attr)
-    else document.documentElement.removeAttribute("data-theme")
-    localStorage.setItem("jt-theme", theme)
-  },[theme])
+export default function ThemeToggle() {
+  const { theme, cycle } = useTheme();
+  const label = theme === "gold" ? "Gold" : theme === "goth" ? "Goth" : "Matrix";
   return (
-    <select className="bg-transparent ring-1 ring-[var(--ring)] rounded px-2 py-1"
-      value={theme} onChange={(e)=>setTheme(e.target.value)}>
-      <option value="day">Gold (Day)</option>
-      <option value="goth">Goth (Night)</option>
-      <option value="matrix">Matrix</option>
-    </select>
-  )
+    <button
+      onClick={cycle}
+      className="px-3 py-2 rounded bg-white/10 hover:bg-white/15 border border-white/10"
+      title="Cycle theme"
+    >
+      Theme: {label}
+    </button>
+  );
 }
