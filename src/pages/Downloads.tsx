@@ -1,15 +1,14 @@
-import React from "react"
+import React from "react";
 export default function Downloads(){
   return (
-    <section className="relative z-10">
-      <h2 className="text-2xl font-bold mb-4">Downloads</h2>
+    <section>
+      <h2 className="text-3xl font-bold mb-6">Downloads</h2>
       <div className="card">
-        <ul className="list-disc ml-5">
-          <li><a href="/resume/John_Treen_Ultimate_Resume_Full.pdf" download>Full Resume (PDF)</a></li>
-          <li><a href="/resume/John_Treen_Ultimate_Resume_Mini.pdf" download>Mini Resume (PDF)</a></li>
-          <li><a href="/downloads/portfolio_package.zip" download>Portfolio Package (zip)</a></li>
+        <ul className="space-y-2">
+          <li><a className="text-yellow-300 underline" href="/resume/resume_full.html">Resume (Full)</a></li>
+          <li><a className="text-yellow-300 underline" href="/resume/resume_mini.html">Resume (Mini)</a></li>
         </ul>
       </div>
     </section>
-  )
+  );
 }

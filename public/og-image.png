@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#FFD700" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0" stop-color="#FFDA6B"/>
+      <stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#FFD70022" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#0a0a0a"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
+  <ellipse cx="600" cy="315" rx="520" ry="260" fill="url(#glow)"/>
+  <g fill="url(#gold)" font-family="Inter,Segoe UI,system-ui">
+    <text x="120" y="240" font-size="64" font-weight="800">John Treen</text>
+    <text x="120" y="300" font-size="32" opacity="0.9">Full-Stack & ML Engineer</text>
+    <text x="120" y="360" font-size="24" fill="#FFD700" opacity="0.9">Code. Data. Progress.</text>
+    <text x="120" y="420" font-size="22" fill="#E5C451">treenjohnportfolio.com</text>
+  </g>
+  <rect x="1000" y="470" width="240" height="50" fill="none"/>
+  <g fill="#E5C451" font-family="Inter,Segoe UI,system-ui" font-size="18">
+    <text x="120" y="480">Open to Hire — Portfolio v1.0</text>
+  </g>
+</svg>

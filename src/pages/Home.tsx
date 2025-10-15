@@ -1,16 +1,14 @@
-import React from "react"
+import React from "react";
 export default function Home(){
   return (
     <section className="relative z-10">
-      <div className="card">
-        <h1 className="text-3xl font-bold mb-2">Hi, I’m John Treen</h1>
-        <p className="text-white/80">Full-Stack & ML Engineer. I build responsive frontends, robust APIs, and data-driven apps.</p>
-      </div>
-      <div className="grid md:grid-cols-3 gap-4 mt-6">
-        <a href="/projects" className="card">🚀 Projects</a>
-        <a href="/skills" className="card">🧰 Skills</a>
-        <a href="/resume" className="card">📄 Resume</a>
-      </div>
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+        Hi, I'm <span className="text-yellow-300">John Treen</span>
+      </h1>
+      <p className="text-white/80 max-w-2xl">
+        Full-Stack & ML Engineer. I build clean React frontends, robust APIs, and pragmatic ML demos.
+        Explore my <a className="text-yellow-300 underline" href="/projects">projects</a>, check the <a className="text-yellow-300 underline" href="/resume">resume</a>, or get in <a className="text-yellow-300 underline" href="/contact">contact</a>.
+      </p>
     </section>
-  )
+  );
 }
