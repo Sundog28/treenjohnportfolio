@@ -12,10 +12,10 @@ const projects = [
   },
   {
     title: "JobTrack API",
-    description: "Backend API to track job applications, built in Go with REST endpoints. (First request may wake the free server.)",
+    description: "Backend API to track job applications, now with live demo",
     image: "/projects/jobtrack.png",
     tech: ["Go", "PostgreSQL", "Render"],
-    link: "https://jobtrack-api.onrender.com",
+    link: "/jobtrack,
     repo: "https://github.com/Sundog28/JobTrackAPI"
   },
   {
