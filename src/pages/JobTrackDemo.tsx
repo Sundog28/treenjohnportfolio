@@ -1,73 +1,50 @@
 // src/pages/JobTrackDemo.tsx
-import React, { useEffect, useState, useMemo } from "react";
-import JobForm from "../components/jobtrack/JobForm";
-import JobList from "../components/jobtrack/JobList";
-import { addJob, listJobs, type Job } from "../services/jobtrackApi";
-
-const PRELOAD: Job[] = [
-  { company: "Google", role: "Backend Engineer", status: "Applied", notes: "Referred" },
-  { company: "Netflix", role: "Platform Engineer", status: "Phone Screen", notes: "Recruiter call completed" },
-  { company: "AWS", role: "SDE II", status: "Interviewing", notes: "System design upcoming" },
-];
+import React, { useEffect, useState } from 'react';
+import HudFrame from '../components/hud/HudFrame';
+import JobForm from '../components/jobtrack/JobForm';
+import JobList from '../components/jobtrack/JobList';
+import { JobTrackApi, Job } from '../services/jobtrackApi';
 
 export default function JobTrackDemo() {
+  const [ok, setOk] = useState<boolean | null>(null);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const preloadedOnce = useMemo(() => ({ value: false }), []);
+  const [err, setErr] = useState<string | null>(null);
 
-  async function refresh() {
-    setLoading(true);
-    try {
-      const data = await listJobs();
-
-      // Preload examples if API is empty
-      if (!preloadedOnce.value && data.length === 0) {
-        preloadedOnce.value = true;
-        for (const j of PRELOAD) await addJob(j);
-        setJobs(await listJobs());
-      } else {
-        setJobs(data);
-      }
-      setError(null);
-    } catch (e: any) {
-      setError(e?.message ?? "Failed to load jobs");
-    } finally {
-      setLoading(false);
-    }
+  async function refresh(){
+    try{ setLoading(true);
+      const data = await JobTrackApi.listJobs(); setJobs(data); setErr(null);
+    }catch(e:any){ setErr(e.message||'Failed to fetch jobs'); }
+    finally{ setLoading(false); }
   }
 
-  async function handleAdd(job: Job) {
-    await addJob(job);
+  useEffect(()=>{ (async()=>{
+    try{ const h=await JobTrackApi.health(); setOk(h.status==="ok"); }catch{ setOk(false); }
     await refresh();
-  }
-
-  useEffect(() => {
-    refresh();
-  }, []);
+  })(); },[]);
 
   return (
-    <section className="space-y-6">
-      <header>
-        <h1 className="text-3xl font-bold mb-1">JobTrack API — Live Demo</h1>
-        <p className="opacity-80">
-          Add and track real job applications — powered by my Go backend on Render.
-        </p>
-      </header>
+    <div className="space-y-6">
+      <div className="text-sm text-emerald-300/80">
+        API: <code className="rounded bg-neutral-900/70 px-2 py-0.5 ring-1 ring-emerald-500/30">{JobTrackApi.BASE}</code>{" "}
+        <span className={ok===null?"opacity-70":ok?"text-emerald-400":"text-red-300"}>
+          {ok===null?"• checking…": ok?"• healthy":"• unavailable"}
+        </span>
+      </div>
 
-      <JobForm onSubmit={handleAdd} />
-      
-      {loading ? (
-        <p className="opacity-70">Loading…</p>
-      ) : error ? (
-        <p className="text-red-400">Error: {error}</p>
-      ) : (
-        <JobList jobs={jobs} />
-      )}
-
-      <p className="text-xs opacity-60">
-        ⚠ The free Render tier may sleep. If slow, wait a moment or refresh.
-      </p>
-    </section>
+      <HudFrame title="JobTrack — Interactive Demo" accent="emerald">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="space-y-3">
+            <div className="text-emerald-200/90">Add Job</div>
+            <JobForm onAdded={()=>refresh()}/>
+          </div>
+          <div className="space-y-3">
+            <div className="text-emerald-200/90">Latest Jobs</div>
+            {err && <div className="rounded-md bg-red-900/40 p-3 text-red-200 ring-1 ring-red-400/40">{err}</div>}
+            <JobList jobs={jobs} loading={loading}/>
+          </div>
+        </div>
+      </HudFrame>
+    </div>
   );
 }

@@ -1,5 +1,4 @@
 // src/services/jobtrackApi.ts
-
 export type Job = {
   id?: number;
   company: string;
@@ -8,30 +7,35 @@ export type Job = {
   notes?: string;
 };
 
-const BASE_URL = "https://jobtrackapi.onrender.com";
+const BASE =
+  import.meta.env.VITE_JOBTRACK_API_URL?.replace(/\/+$/, '') ||
+  'https://jobtrack-api.onrender.com';
 
-// 🔍 Fetch all jobs
-export async function listJobs(): Promise<Job[]> {
-  const res = await fetch(`${BASE_URL}/jobs`, {
-    cache: "no-store",
-  });
+async function json<T>(res: Response): Promise<T> {
   if (!res.ok) {
-    throw new Error(`Failed to load jobs: ${res.status}`);
+    const text = await res.text().catch(() => '');
+    throw new Error(`${res.status} ${res.statusText} ${text}`.trim());
   }
-  return res.json();
+  return res.json() as Promise<T>;
 }
 
-// ➕ Add a new job
+export async function health(): Promise<{ status: string }> {
+  const res = await fetch(`${BASE}/healthz`, { cache: 'no-store' });
+  return json(res);
+}
+
+export async function listJobs(): Promise<Job[]> {
+  const res = await fetch(`${BASE}/jobs`, { cache: 'no-store' });
+  return json(res);
+}
+
 export async function addJob(job: Job): Promise<Job> {
-  const res = await fetch(`${BASE_URL}/jobs`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const res = await fetch(`${BASE}/jobs`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(job),
   });
-  if (!res.ok) {
-    throw new Error(`Failed to add job: ${res.status}`);
-  }
-  return res.json();
+  return json(res);
 }
+
+export const JobTrackApi = { BASE, health, listJobs, addJob };

@@ -4,7 +4,7 @@ import ProjectCard from "../components/ProjectCard";
 const projects = [
   {
     title: "SkillForge",
-    description: "A gamified skill-tracking app with progress bars and theming.",
+    description: "A gamified skill-tracking app with progress rings and presets.",
     image: "/projects/skillforge.png",
     tech: ["React", "TypeScript", "TailwindCSS", "Vite"],
     link: "/skillforge",
