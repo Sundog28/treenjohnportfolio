@@ -1,50 +1,84 @@
-// src/pages/JobTrackDemo.tsx
-import React, { useEffect, useState } from 'react';
-import HudFrame from '../components/hud/HudFrame';
-import JobForm from '../components/jobtrack/JobForm';
-import JobList from '../components/jobtrack/JobList';
-import { JobTrackApi, Job } from '../services/jobtrackApi';
+import React, { useState } from "react";
+
+interface Job {
+  id: number;
+  company: string;
+  role: string;
+  status: string;
+}
 
 export default function JobTrackDemo() {
-  const [ok, setOk] = useState<boolean | null>(null);
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState<string | null>(null);
+  const [company, setCompany] = useState("");
+  const [role, setRole] = useState("");
+  const [status, setStatus] = useState("Applied");
 
-  async function refresh(){
-    try{ setLoading(true);
-      const data = await JobTrackApi.listJobs(); setJobs(data); setErr(null);
-    }catch(e:any){ setErr(e.message||'Failed to fetch jobs'); }
-    finally{ setLoading(false); }
-  }
-
-  useEffect(()=>{ (async()=>{
-    try{ const h=await JobTrackApi.health(); setOk(h.status==="ok"); }catch{ setOk(false); }
-    await refresh();
-  })(); },[]);
+  const addJob = () => {
+    if (!company.trim() || !role.trim()) return;
+    setJobs([
+      ...jobs,
+      { id: Date.now(), company, role, status },
+    ]);
+    setCompany("");
+    setRole("");
+  };
 
   return (
-    <div className="space-y-6">
-      <div className="text-sm text-emerald-300/80">
-        API: <code className="rounded bg-neutral-900/70 px-2 py-0.5 ring-1 ring-emerald-500/30">{JobTrackApi.BASE}</code>{" "}
-        <span className={ok===null?"opacity-70":ok?"text-emerald-400":"text-red-300"}>
-          {ok===null?"• checking…": ok?"• healthy":"• unavailable"}
-        </span>
+    <div className="min-h-screen bg-black text-green-400 p-8">
+      <h1 className="text-4xl font-bold mb-4">🧪 JobTrack API (Demo UI)</h1>
+      <p className="opacity-80 mb-6">
+        Add job applications and track their progress.
+      </p>
+
+      <div className="bg-gray-900 p-4 rounded border border-green-500 mb-4">
+        <h2 className="text-xl font-bold mb-2">Add Job</h2>
+        <input
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded text-white mb-2 w-full"
+          placeholder="Company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+        <input
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded text-white mb-2 w-full"
+          placeholder="Role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        />
+        <select
+          className="px-3 py-2 bg-gray-800 border border-gray-700 rounded text-white mb-4 w-full"
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option>Applied</option>
+          <option>Interviewing</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+        </select>
+        <button
+          onClick={addJob}
+          className="px-4 py-2 bg-green-500 hover:bg-green-600 rounded text-black font-bold w-full"
+        >
+          Add Job
+        </button>
       </div>
 
-      <HudFrame title="JobTrack — Interactive Demo" accent="emerald">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-3">
-            <div className="text-emerald-200/90">Add Job</div>
-            <JobForm onAdded={()=>refresh()}/>
-          </div>
-          <div className="space-y-3">
-            <div className="text-emerald-200/90">Latest Jobs</div>
-            {err && <div className="rounded-md bg-red-900/40 p-3 text-red-200 ring-1 ring-red-400/40">{err}</div>}
-            <JobList jobs={jobs} loading={loading}/>
-          </div>
-        </div>
-      </HudFrame>
+      <div>
+        <h2 className="text-2xl font-bold mb-2">📄 Job Applications</h2>
+        {jobs.length === 0 ? (
+          <p className="opacity-50">No jobs added yet.</p>
+        ) : (
+          jobs.map((job) => (
+            <div
+              key={job.id}
+              className="bg-gray-900 p-4 rounded mb-2 border border-green-500"
+            >
+              <p><strong>{job.company}</strong> — {job.role}</p>
+              <p className="text-sm opacity-70">{job.status}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
+

@@ -5,18 +5,18 @@ export default function Projects() {
   const projects = [
     {
       title: "SkillForge",
-      description: "A gamified skill-tracking app with progress rings and theming.",
+      description: "A gamified skill-tracking app with progress bars and theming.",
       image: "/projects/skillforge.png",
       tech: ["React", "TypeScript", "TailwindCSS", "Vite"],
-      link: "/skillforge",
+      link: "/skillforge", // Internal interactive page
       repo: "https://github.com/Sundog28/SkillForge",
     },
     {
       title: "JobTrack API",
-      description: "Backend API to track job applications, now with a live in-site demo.",
+      description: "Backend API to track job applications, now with interactive demo.",
       image: "/projects/jobtrack.png",
       tech: ["Go", "PostgreSQL", "Render"],
-      link: "/jobtrack", // ✅ FIXED
+      link: "/jobtrack", // Internal interactive demo
       repo: "https://github.com/Sundog28/JobTrackAPI",
     },
     {
@@ -30,15 +30,14 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-6 text-center">
-      <h1 className="text-5xl font-bold mb-12 tracking-wide">
-        <span className="text-yellow-400">Projects</span>
-      </h1>
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+    <section className="min-h-screen px-6 py-20 text-white">
+      <h1 className="text-4xl font-bold mb-10">Projects</h1>
+      <div className="grid md:grid-cols-3 gap-6">
+        {projects.map((proj, i) => (
+          <ProjectCard key={i} {...proj} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
+
