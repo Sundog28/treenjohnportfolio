@@ -1,3 +1,4 @@
+import JobTrackDemo from "./pages/JobTrackDemo";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -17,6 +18,7 @@ export default function AppRoutes(){
       <Route path="/skills" element={<Skills/>}/>
       <Route path="/projects" element={<Projects/>}/>
       <Route path="/skillforge" element={<SkillForge/>}/> {/* ⬅️ NEW */}
+      <Route path="/jobtrack" element={<JobTrackDemo/>}/>
       <Route path="/resume" element={<Resume/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/recruiter" element={<Recruiter/>}/>
