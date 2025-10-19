@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050a12"/>
+      <stop offset="1" stop-color="#0b1524"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#88e0ff"/>
+      <stop offset="1" stop-color="#3bb1e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <!-- blueprint grid -->
+  <g stroke="#0e253e" stroke-opacity="0.6" stroke-width="1">
+    <path d="M64 0v720M128 0v720M192 0v720M256 0v720M320 0v720M384 0v720M448 0v720M512 0v720M576 0v720M640 0v720M704 0v720M768 0v720M832 0v720M896 0v720M960 0v720M1024 0v720M1088 0v720M1152 0v720M1216 0v720"/>
+    <path d="M0 64h1280M0 128h1280M0 192h1280M0 256h1280M0 320h1280M0 384h1280M0 448h1280M0 512h1280M0 576h1280M0 640h1280"/>
+  </g>
+
+  <!-- terminal panel -->
+  <rect x="220" y="150" width="840" height="420" rx="14" fill="#0a1320" stroke="#2ab3ff" stroke-opacity="0.5"/>
+  <rect x="220" y="150" width="840" height="42" rx="14" fill="#0f1e33" stroke="#2ab3ff" stroke-opacity="0.6"/>
+  <circle cx="246" cy="171" r="6" fill="#38bdf8"/>
+  <circle cx="268" cy="171" r="6" fill="#22d3ee"/>
+  <circle cx="290" cy="171" r="6" fill="#60a5fa"/>
+
+  <!-- terminal text -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco" font-size="18" fill="#bfe9ff">
+    <text x="250" y="215">$ curl -s https://jobtrack-api/healthz → {" status": "ok" }</text>
+    <text x="250" y="250">$ POST /jobs {" company": "Google", "role": "Backend" }</text>
+    <text x="250" y="285">$ GET  /jobs  →  [ … 12 results ]</text>
+  </g>
+
+  <!-- flow nodes -->
+  <g stroke="url(#cyan)" fill="none" stroke-width="2" opacity="0.85">
+    <rect x="260" y="340" width="180" height="60" rx="8" fill="#0a1728" />
+    <rect x="550" y="340" width="180" height="60" rx="8" fill="#0a1728" />
+    <rect x="840" y="340" width="180" height="60" rx="8" fill="#0a1728" />
+    <path d="M440 370h110M730 370h110"/>
+    <path d="M550 340l-10 10M550 400l-10 -10M730 340l10 10M730 400l10 -10" stroke-opacity="0.6"/>
+  </g>
+  <g fill="#9adfff" font-family="Inter, ui-sans-serif" font-size="16" text-anchor="middle">
+    <text x="350" y="377">Applied</text>
+    <text x="640" y="377">Interviewing</text>
+    <text x="930" y="377">Offer</text>
+  </g>
+
+  <!-- title -->
+  <text x="640" y="630" text-anchor="middle" fill="#bfe9ff" font-family="Inter, ui-sans-serif" font-size="46" font-weight="800" letter-spacing="2">
+    JOBTRACK API
+  </text>
+  <text x="640" y="664" text-anchor="middle" fill="#7ccfff" font-family="Inter, ui-sans-serif" font-size="22" opacity="0.9">
+    Terminal · REST · Pipeline Flow
+  </text>
+</svg>

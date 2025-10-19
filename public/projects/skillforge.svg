@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b0b"/>
+      <stop offset="1" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="gold" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#ffde85"/>
+      <stop offset="0.5" stop-color="#f5b342"/>
+      <stop offset="1" stop-color="#b07a1a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g1)"/>
+  <!-- subtle grid -->
+  <g opacity="0.15" stroke="#3a2d00" stroke-width="1">
+    <g>
+      <!-- verticals -->
+      <path d="M80 0v720M160 0v720M240 0v720M320 0v720M400 0v720M480 0v720M560 0v720M640 0v720M720 0v720M800 0v720M880 0v720M960 0v720M1040 0v720M1120 0v720M1200 0v720"/>
+      <!-- horizontals -->
+      <path d="M60 60h1160M60 120h1160M60 180h1160M60 240h1160M60 300h1160M60 360h1160M60 420h1160M60 480h1160M60 540h1160M60 600h1160M60 660h1160"/>
+    </g>
+  </g>
+
+  <!-- forge glow -->
+  <circle cx="640" cy="360" r="240" fill="url(#gold)" opacity="0.18"/>
+  <circle cx="640" cy="360" r="150" fill="url(#gold)" opacity="0.12"/>
+
+  <!-- rings -->
+  <g fill="none" stroke-linecap="round">
+    <circle cx="640" cy="360" r="210" stroke="#f5c451" stroke-opacity="0.35" stroke-width="10"/>
+    <circle cx="640" cy="360" r="170" stroke="#f8d271" stroke-opacity="0.45" stroke-width="8" stroke-dasharray="80 40" transform="rotate(-25 640 360)"/>
+    <circle cx="640" cy="360" r="130" stroke="#ffd774" stroke-opacity="0.9" stroke-width="8" stroke-dasharray="280 130" transform="rotate(-90 640 360)"/>
+  </g>
+
+  <!-- HUD ticks -->
+  <g stroke="#f6d686" stroke-opacity="0.5">
+    <path d="M640 120v40M640 560v40M920 360h40M320 360h-40"/>
+  </g>
+
+  <!-- Title -->
+  <text x="640" y="620" text-anchor="middle" fill="#f8e1a1" font-family="Inter, ui-sans-serif" font-size="48" font-weight="800" letter-spacing="2">
+    SKILLFORGE
+  </text>
+  <text x="640" y="660" text-anchor="middle" fill="#e9c46a" font-family="Inter, ui-sans-serif" font-size="22" opacity="0.9">
+    Gamified Skill Tracking · Rings · HUD
+  </text>
+
+  <!-- hammer icon -->
+  <g transform="translate(590,280)" fill="#ffd774" opacity="0.85">
+    <rect x="0" y="0" width="80" height="30" rx="6"/>
+    <rect x="34" y="25" width="12" height="70" rx="6"/>
+  </g>
+</svg>

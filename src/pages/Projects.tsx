@@ -6,23 +6,23 @@ export default function Projects() {
     {
       title: "SkillForge",
       description: "A gamified skill-tracking app with progress bars and theming.",
-      image: "/projects/skillforge.png",
+      image: "/projects/skillforge.svg", // ⬅️ wired to SVG
       tech: ["React", "TypeScript", "TailwindCSS", "Vite"],
-      link: "/skillforge", // Internal interactive page
+      link: "/skillforge",
       repo: "https://github.com/Sundog28/SkillForge",
     },
     {
       title: "JobTrack API",
       description: "Backend API to track job applications, now with interactive demo.",
-      image: "/projects/jobtrack.png",
+      image: "/projects/jobtrack.svg", // ⬅️ wired to SVG
       tech: ["Go", "PostgreSQL", "Render"],
-      link: "/jobtrack", // Internal interactive demo
+      link: "/jobtrack",
       repo: "https://github.com/Sundog28/JobTrackAPI",
     },
     {
       title: "ML Capstone — Wine Quality",
       description: "Machine Learning model using RandomForest on UCI Wine Dataset.",
-      image: "/projects/mlcapstone.png",
+      image: "/projects/mlcapstone.svg", // ⬅️ wired to SVG
       tech: ["Python", "Pandas", "Streamlit"],
       link: "https://huggingface.co/spaces/Sundog28/MLCapstone",
       repo: "https://huggingface.co/spaces/Sundog28/MLCapstone/tree/main",
@@ -40,4 +40,3 @@ export default function Projects() {
     </section>
   );
 }
-

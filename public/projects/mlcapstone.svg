@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="bgp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#160418"/>
+      <stop offset="1" stop-color="#0a0010"/>
+    </linearGradient>
+    <radialGradient id="wine" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#ff79b0"/>
+      <stop offset="0.5" stop-color="#b32ac3"/>
+      <stop offset="1" stop-color="#5b1a6b"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bgp)"/>
+  <!-- subtle grid -->
+  <g opacity="0.15" stroke="#4e1450" stroke-width="1">
+    <path d="M80 0v720M160 0v720M240 0v720M320 0v720M400 0v720M480 0v720M560 0v720M640 0v720M720 0v720M800 0v720M880 0v720M960 0v720M1040 0v720M1120 0v720M1200 0v720"/>
+    <path d="M0 60h1280M0 120h1280M0 180h1280M0 240h1280M0 300h1280M0 360h1280M0 420h1280M0 480h1280M0 540h1280M0 600h1280M0 660h1280"/>
+  </g>
+
+  <!-- wine glass -->
+  <g transform="translate(460,190)" opacity="0.95">
+    <path d="M160 120 a80 60 0 1 1 -160 0 a80 60 0 1 1 160 0" fill="url(#wine)" opacity="0.85"/>
+    <path d="M80 120 v160" stroke="#f0c3ff" stroke-width="6" stroke-linecap="round"/>
+    <rect x="50" y="280" width="60" height="16" rx="8" fill="#f0c3ff" opacity="0.8"/>
+  </g>
+
+  <!-- charts -->
+  <g stroke="#f0c3ff" stroke-opacity="0.8" fill="none">
+    <polyline points="720,420 790,380 860,460 930,330 1000,370 1070,310" stroke-width="3"/>
+    <rect x="720" y="240" width="350" height="150" rx="10" opacity="0.3"/>
+    <line x1="720" y1="315" x2="1070" y2="315" opacity="0.3"/>
+    <line x1="795" y1="240" x2="795" y2="390" opacity="0.3"/>
+    <line x1="870" y1="240" x2="870" y2="390" opacity="0.3"/>
+    <line x1="945" y1="240" x2="945" y2="390" opacity="0.3"/>
+    <line x1="1020" y1="240" x2="1020" y2="390" opacity="0.3"/>
+  </g>
+
+  <!-- title -->
+  <text x="640" y="630" text-anchor="middle" fill="#f4c7ff" font-family="Inter, ui-sans-serif" font-size="44" font-weight="800" letter-spacing="1.5">
+    ML CAPSTONE — WINE QUALITY
+  </text>
+  <text x="640" y="664" text-anchor="middle" fill="#e7abff" font-family="Inter, ui-sans-serif" font-size="22" opacity="0.9">
+    RandomForest · UCI Dataset · Streamlit
+  </text>
+</svg>

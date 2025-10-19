@@ -1,4 +1,3 @@
-import JobTrackDemo from "./pages/JobTrackDemo";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -9,7 +8,8 @@ import Contact from "./pages/Contact";
 import Recruiter from "./pages/Recruiter";
 import Downloads from "./pages/Downloads";
 import NotFound from "./pages/NotFound";
-import SkillForge from "./pages/SkillForge"; // ⬅️ NEW
+import SkillForge from "./pages/SkillForge";
+import JobTrackDemo from "./pages/JobTrackDemo";
 
 export default function AppRoutes(){
   return (
@@ -17,7 +17,7 @@ export default function AppRoutes(){
       <Route path="/" element={<Home/>}/>
       <Route path="/skills" element={<Skills/>}/>
       <Route path="/projects" element={<Projects/>}/>
-      <Route path="/skillforge" element={<SkillForge/>}/> {/* ⬅️ NEW */}
+      <Route path="/skillforge" element={<SkillForge/>}/>
       <Route path="/jobtrack" element={<JobTrackDemo/>}/>
       <Route path="/resume" element={<Resume/>}/>
       <Route path="/contact" element={<Contact/>}/>

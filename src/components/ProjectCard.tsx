@@ -1,23 +1,59 @@
 import React from "react";
-type Props = {
-  title: string; description: string; image: string;
-  tech: string[]; link?: string; repo?: string;
+
+type Project = {
+  title: string;
+  description: string;
+  image?: string;
+  tech: string[];
+  link?: string;
+  repo?: string;
 };
-export default function ProjectCard({ title, description, image, tech, link, repo }: Props){
+
+export default function ProjectCard(props: Project) {
+  const { title, description, image, tech, link, repo } = props;
+
   return (
-    <article className="card overflow-hidden">
-      <div className="rounded-lg overflow-hidden mb-4 bg-black/40">
-        <img src={image} alt={title} className="w-full h-48 object-cover" loading="lazy"/>
-      </div>
-      <h3 className="text-xl font-semibold mb-1" style={{color:"var(--accent)"}}>{title}</h3>
-      <p className="text-white/80 mb-3">{description}</p>
+    <div className="bg-neutral-950 border border-yellow-600/40 rounded-lg p-4 shadow-lg hover:shadow-yellow-700/20 transition">
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          className="mb-4 w-full h-40 object-cover rounded-[6px]" /* square-ish, minimal radius */
+          loading="lazy"
+        />
+      )}
+      <h2 className="text-xl font-semibold text-yellow-200">{title}</h2>
+      <p className="text-yellow-100/80 mt-1 mb-3">{description}</p>
+
       <div className="flex flex-wrap gap-2 mb-4">
-        {tech.map(t => <span key={t} className="px-2 py-1 text-xs rounded bg-white/10 border border-white/10">{t}</span>)}
+        {tech.map((t, i) => (
+          <span key={i} className="px-2 py-1 text-xs bg-neutral-900 border border-yellow-600/30 rounded">
+            {t}
+          </span>
+        ))}
       </div>
-      <div className="flex gap-3">
-        {link && <a className="btn btn-primary" href={link} target="_blank" rel="noreferrer">Live ↗</a>}
-        {repo && <a className="btn" href={repo} target="_blank" rel="noreferrer">Repo ↗</a>}
+
+      <div className="flex gap-4">
+        {link && (
+          <a
+            href={link}
+            className="text-yellow-300 hover:underline"
+            {...(link.startsWith("/") ? {} : { target: "_blank", rel: "noreferrer" })}
+          >
+            Live ↗
+          </a>
+        )}
+        {repo && (
+          <a
+            href={repo}
+            className="text-yellow-400 hover:underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Repo ↗
+          </a>
+        )}
       </div>
-    </article>
+    </div>
   );
 }
