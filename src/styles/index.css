@@ -1,24 +1,83 @@
-@tailwind base; @tailwind components; @tailwind utilities;
-/* theme tokens */
-:root{ --bg:#000; --text:#fff; --accent:#ffd700; --panel:rgba(255,255,255,.06); --ring:rgba(255,215,0,.35) }
-.theme-goth{ --bg:#0a0b0c; --text:#e9ebf3; --accent:#9aa0ff; --panel:rgba(255,255,255,.06); --ring:rgba(154,160,255,.35) }
-.theme-matrix{ --bg:#040a07; --text:#e7fef3; --accent:#00ff88; --panel:rgba(0,255,136,.05); --ring:rgba(0,255,136,.35) }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic theme tokens */
+:root{
+  --bg:#05060a;
+  --text:#eaf0ff;
+  --muted: rgba(234,240,255,.70);
+  --accent:#7c5cff;              /* neon violet */
+  --accent2:#00ffb3;             /* neon mint */
+  --panel: rgba(255,255,255,.06);
+  --ring: rgba(124,92,255,.40);
+  --ring2: rgba(0,255,179,.28);
+}
+
+/* Optional alternate themes (keep yours if you like) */
+.theme-gold{ --accent:#ffd700; --accent2:#00ffb3; --ring:rgba(255,215,0,.35); }
+.theme-matrix{ --bg:#040a07; --text:#e7fef3; --accent:#00ff88; --accent2:#7c5cff; --panel:rgba(0,255,136,.05); --ring:rgba(0,255,136,.35) }
 
 html,body,#root{height:100%;background:var(--bg);color:var(--text)}
-a{color:var(--accent)}
-.page{ @apply relative z-10 max-w-6xl mx-auto px-4 py-10 }
+a{color:var(--accent); text-decoration:none}
+a:hover{ text-decoration:underline; text-underline-offset:4px }
 
-/* cards & buttons */
-.card{ @apply rounded-xl p-5 shadow-md ring-1 ring-transparent transition; background:var(--panel) }
-.card:hover{ box-shadow:0 0 0 1px var(--ring), 0 0 22px var(--accent) }
-.btn{ @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium border; border-color:rgba(255,255,255,.12) }
-.btn:hover{ box-shadow:0 0 0 1px var(--ring) }
-.btn-primary{ color:var(--accent); border-color:transparent; box-shadow:0 0 0 1px var(--ring), 0 0 18px var(--accent) }
+.page{ @apply relative z-10 mx-auto max-w-6xl px-6 py-12 }
 
-/* visible floating objects */
-.hud{ position:fixed; inset:0; pointer-events:none; z-index:0 }
-.obj{ position:absolute; filter:drop-shadow(0 0 12px var(--accent)); opacity:.9 }
-.obj.chip{ width:140px; height:90px; border:1px solid var(--accent); border-radius:10px; top:12%; left:6%; transform:rotate(-8deg) }
-.obj.ring{ width:180px; height:180px; border:2px dashed var(--accent); border-radius:999px; bottom:10%; right:10%; animation:spin 18s linear infinite }
-.obj.tri::before{ content:""; position:absolute; width:0; height:0; border-left:60px solid transparent; border-right:60px solid transparent; border-bottom:100px solid var(--accent); top:20%; left:16%; opacity:.25; transform:rotate(12deg) }
-@keyframes spin{ to{ transform:rotate(360deg) } }
+/* Components */
+.card{
+  @apply rounded-2xl border border-white/10 shadow-xl;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+}
+.card:hover{
+  box-shadow:
+    0 0 0 1px var(--ring),
+    0 0 30px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.btn{
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.03);
+}
+.btn:hover{ background: rgba(255,255,255,.06) }
+.btn-primary{
+  border: 0;
+  color: #0b0d12;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 0 1px var(--ring), 0 0 26px var(--accent);
+}
+.tag{
+  @apply rounded-full px-3 py-1 text-xs border border-white/15 text-white/80;
+}
+
+/* Futuristic background */
+.animated-bg{
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,92,255,.25), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(0,255,179,.18), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(255,255,255,.08), transparent 55%);
+  filter: blur(18px);
+  animation: bgShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes bgShift{
+  0%{ transform: translate3d(-1%,-1%,0) scale(1); }
+  100%{ transform: translate3d(1%,1%,0) scale(1.03); }
+}
+
+/* Motion */
+.fade-in-up{ animation: fadeInUp 700ms ease-out both; }
+.delay-150{ animation-delay:150ms; }
+.delay-300{ animation-delay:300ms; }
+
+@keyframes fadeInUp{
+  from{ opacity:0; transform: translateY(12px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.float-slow{ animation: floaty 6s ease-in-out infinite; }
+.float-med{ animation: floaty 4.5s ease-in-out infinite; }
+.float-fast{ animation: floaty 3.6s ease-in-out infinite; }
+@keyframes floaty{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-10px) } }
