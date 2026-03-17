@@ -1,59 +1,95 @@
 import React from "react";
+import CyberBackground from "../components/CyberBackground";
 
 export default function Contact() {
-  const query = new URLSearchParams(window.location.search);
-  const sent = query.get("sent") === "true";
-
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6">Contact</h2>
+    <section className="relative overflow-hidden">
+      <CyberBackground />
 
-      {!sent ? (
-        <form
-          className="card max-w-xl"
-          action="https://formsubmit.co/treenjohnm@gmail.com"
-          method="POST"
-        >
-          <input type="hidden" name="_next" value="https://treenjohnportfolio.com/contact?sent=true" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_subject" value="Portfolio Contact Message" />
+      <div className="page">
+        <div className="glow-frame fade-in-up">
+          <div className="glow-inner card p-10">
+            <p className="text-sm tracking-widest uppercase text-white/60">
+              Contact
+            </p>
 
-          <label className="block mb-3">
-            <span className="text-sm text-white/70">Name</span>
-            <input
-              required
-              type="text"
-              name="name"
-              className="mt-1 w-full px-3 py-2 rounded bg-white/10 border border-white/10"
-            />
-          </label>
+            <h1 className="mt-3 text-4xl font-extrabold md:text-5xl">
+              Let’s Connect
+            </h1>
 
-          <label className="block mb-3">
-            <span className="text-sm text-white/70">Email</span>
-            <input
-              required
-              type="email"
-              name="email"
-              className="mt-1 w-full px-3 py-2 rounded bg-white/10 border border-white/10"
-            />
-          </label>
+            <p className="mt-3 max-w-2xl text-white/75">
+              I’m open to remote junior and entry-level full-stack, backend,
+              and ML-adjacent software roles.
+            </p>
 
-          <label className="block mb-4">
-            <span className="text-sm text-white/70">Message</span>
-            <textarea
-              required
-              name="message"
-              className="mt-1 w-full px-3 py-2 rounded bg-white/10 border border-white/10 h-32"
-            />
-          </label>
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="card p-6">
+                <h2 className="text-xl font-semibold">Direct Contact</h2>
+                <div className="mt-4 space-y-3 text-white/75">
+                  <p>
+                    Email:{" "}
+                    <a href="mailto:treenjohnm@gmail.com">
+                      treenjohnm@gmail.com
+                    </a>
+                  </p>
+                  <p>
+                    GitHub:{" "}
+                    <a
+                      href="https://github.com/Sundog28"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      github.com/Sundog28
+                    </a>
+                  </p>
+                  <p>
+                    LinkedIn:{" "}
+                    <a
+                      href="https://www.linkedin.com/in/john-treen-629a81159/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      linkedin.com/in/john-treen-629a81159
+                    </a>
+                  </p>
+                </div>
+              </div>
 
-          <button type="submit" className="btn btn-primary">Send Message</button>
-        </form>
-      ) : (
-        <div className="card max-w-xl">
-          ✅ Thanks — Your message has been sent. I’ll reply soon.
+              <div className="card p-6">
+                <h2 className="text-xl font-semibold">Status</h2>
+                <div className="mt-4 space-y-2 text-white/75">
+                  <p>• Open to remote roles</p>
+                  <p>• Junior / entry-level full-stack opportunities</p>
+                  <p>• Backend roles with Go are especially interesting</p>
+                  <p>• Available immediately</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a className="btn btn-primary" href="mailto:treenjohnm@gmail.com">
+                Email Me
+              </a>
+              <a
+                className="btn"
+                href="https://github.com/Sundog28"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                className="btn"
+                href="https://www.linkedin.com/in/john-treen-629a81159/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }

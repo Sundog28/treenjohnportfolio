@@ -5,22 +5,32 @@ export default function JobTrackCaseStudy() {
   return (
     <CaseStudyLayout
       title="JobTrack API"
-      subtitle="A production-style backend API in Go for tracking job applications, statuses, and notes. Designed with clean separation of layers, validation, and token-based auth."
+      subtitle="A production-style backend API in Go for tracking job applications, statuses, and notes. Built to show clean structure, validation, and maintainable backend engineering."
       tags={["Backend", "Go", "REST API", "PostgreSQL", "Auth"]}
       problem={[
-        "Job tracking becomes messy without a consistent system for statuses, notes, and follow-ups.",
-        "I wanted a backend that looks like real production code: clean layers, validation, and structured JSON responses.",
+        "Tracking job applications manually gets messy fast without a consistent structure.",
+        "I wanted to build a backend that looked and felt closer to production code than a tutorial project.",
+        "The goal was to model clean API design, validation, and layered architecture in Go.",
       ]}
       solution={[
-        "Designed RESTful endpoints for CRUD operations and status updates.",
-        "Implemented token-based auth and request validation.",
-        "Separated responsibilities across handlers → services → storage for maintainability.",
+        "Designed RESTful endpoints for creating, reading, updating, and managing application records.",
+        "Implemented token-based authentication and structured validation to improve reliability.",
+        "Separated responsibilities into handlers, services, and storage layers to keep the backend maintainable.",
       ]}
       results={[
-        "A backend that demonstrates real-world architecture decisions.",
-        "Reusable patterns that can scale into a full product.",
+        "Produced a backend project that demonstrates real-world engineering structure.",
+        "Showed practical knowledge of API architecture, request flow, and clean separation of concerns.",
+        "Created a strong flagship backend piece for the portfolio and recruiter mode.",
       ]}
-      tech={["Go", "PostgreSQL", "REST", "Auth", "Validation"]}
+      tech={[
+        "Go",
+        "REST APIs",
+        "PostgreSQL",
+        "Authentication",
+        "Validation",
+        "Layered backend architecture",
+      ]}
+      images={["/projects/jobtrack-1.png"]}
       links={[
         { label: "Code", href: "https://github.com/Sundog28", external: true },
       ]}

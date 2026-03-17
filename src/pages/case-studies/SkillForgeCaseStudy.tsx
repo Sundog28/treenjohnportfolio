@@ -5,26 +5,33 @@ export default function SkillForgeCaseStudy() {
   return (
     <CaseStudyLayout
       title="SkillForge"
-      subtitle="A full-stack learning tracker with a polished UI and a product-style structure designed to be deployable and easy to extend."
-      tags={["Full Stack", "React", "TypeScript", "Tailwind"]}
+      subtitle="A full-stack learning tracker with a polished interface and a product-style structure designed to be extendable, deployable, and easy to navigate."
+      tags={["Full Stack", "React", "TypeScript", "Tailwind", "Vite"]}
       problem={[
-        "I needed a clean way to track what I’m learning, what I’ve completed, and what I’m working on next.",
-        "Most “tracker” apps feel cluttered or aren’t designed with a clear product structure.",
+        "I wanted a cleaner way to track learning progress, completed work, and next steps.",
+        "Most learning trackers feel cluttered or don’t present information with a polished product feel.",
+        "I needed a project that showed both frontend quality and structured thinking.",
       ]}
       solution={[
-        "Built a modern UI with clear sections and reusable components.",
-        "Used routing and page-level layout to make it feel like a real product.",
-        "Kept the codebase organized for easy iteration and future features.",
+        "Built a modern interface with reusable components and a clean visual hierarchy.",
+        "Used page-level structure and routing to make the app feel like a real product instead of a small demo.",
+        "Designed the codebase to be easy to extend with future tracking and analytics features.",
       ]}
       results={[
-        "A recruiter-friendly project that demonstrates UI quality and engineering structure.",
-        "Clear navigation and expandable architecture for new features.",
+        "Created a recruiter-friendly project that demonstrates frontend polish and product thinking.",
+        "Showed the ability to organize code cleanly across components, layout, and navigation.",
+        "Produced a project that fits naturally into a modern portfolio case-study flow.",
       ]}
-      tech={["React", "TypeScript", "Tailwind CSS", "Vite"]}
+      tech={[
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "Component-based UI design",
+      ]}
+      images={["/projects/skillforge-1.png"]}
       links={[
         { label: "Code", href: "https://github.com/Sundog28", external: true },
-        // add demo link when available:
-        // { label: "Live Demo", href: "https://your-demo-link", external: true },
       ]}
     />
   );
