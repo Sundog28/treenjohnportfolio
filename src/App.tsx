@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Routes, Route, NavLink, useLocation } from "react-router-dom";
-import { Command } from "lucide-react";
+import { Command, Volume2, VolumeX } from "lucide-react";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -34,11 +34,18 @@ export default function App() {
   const [theme, setTheme] = useState<ThemeMode>("purple");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [soundOn, setSoundOn] = useState(false);
+  const humRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("portfolio-theme");
     if (saved === "gold" || saved === "purple" || saved === "green") {
       setTheme(saved);
+    }
+
+    const savedSound = localStorage.getItem("portfolio-sound");
+    if (savedSound === "on") {
+      setSoundOn(true);
     }
   }, []);
 
@@ -51,6 +58,25 @@ export default function App() {
     document.documentElement.classList.add(`theme-${theme}`);
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("portfolio-sound", soundOn ? "on" : "off");
+
+    const audio = humRef.current;
+    if (!audio) return;
+
+    audio.volume = 0.18;
+    audio.loop = true;
+
+    if (soundOn) {
+      audio.play().catch(() => {
+        setSoundOn(false);
+      });
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }, [soundOn]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -76,10 +102,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen">
+      <audio ref={humRef} src="/audio/low-tech-hum.mp3" preload="auto" />
+
       <Navbar
         theme={theme}
         onSetTheme={setTheme}
         onOpenPalette={() => setPaletteOpen(true)}
+        soundOn={soundOn}
+        onToggleSound={() => setSoundOn((v) => !v)}
       />
 
       <PageShell>
@@ -171,10 +201,14 @@ function Navbar({
   theme,
   onSetTheme,
   onOpenPalette,
+  soundOn,
+  onToggleSound,
 }: {
   theme: ThemeMode;
   onSetTheme: (theme: ThemeMode) => void;
   onOpenPalette: () => void;
+  soundOn: boolean;
+  onToggleSound: () => void;
 }) {
   const linkBase =
     "rounded-xl px-4 py-2 text-sm font-semibold transition border border-white/10 bg-white/5 hover:bg-white/10";
@@ -268,28 +302,25 @@ function Navbar({
           >
             <Command size={16} />
           </button>
+
+          <button
+            className={linkBase + " text-white/80"}
+            onClick={onToggleSound}
+            type="button"
+            title="Ambient Sound"
+          >
+            {soundOn ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className={themeBtn("gold")}
-            onClick={() => onSetTheme("gold")}
-          >
+          <button type="button" className={themeBtn("gold")} onClick={() => onSetTheme("gold")}>
             Gold
           </button>
-          <button
-            type="button"
-            className={themeBtn("purple")}
-            onClick={() => onSetTheme("purple")}
-          >
+          <button type="button" className={themeBtn("purple")} onClick={() => onSetTheme("purple")}>
             Purple
           </button>
-          <button
-            type="button"
-            className={themeBtn("green")}
-            onClick={() => onSetTheme("green")}
-          >
+          <button type="button" className={themeBtn("green")} onClick={() => onSetTheme("green")}>
             Green
           </button>
         </div>
