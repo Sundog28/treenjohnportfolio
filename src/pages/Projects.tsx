@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import CyberBackground from "../components/CyberBackground";
 
 type Project = {
   slug: string;
@@ -7,6 +8,7 @@ type Project = {
   category: "Full Stack" | "Backend" | "ML";
   highlights: string[];
   tech: string[];
+  image?: string;
   links: {
     caseStudy?: string;
     repo?: string;
@@ -27,6 +29,7 @@ const PROJECTS: Project[] = [
       "Designed to be deployable and easy to extend.",
     ],
     tech: ["React", "TypeScript", "Tailwind", "Vite"],
+    image: "/projects/skillforge-1.png",
     links: {
       caseStudy: "/projects/skillforge",
       repo: "https://github.com/Sundog28",
@@ -45,6 +48,7 @@ const PROJECTS: Project[] = [
       "Designed for maintainability, clarity, and real-world backend structure.",
     ],
     tech: ["Go", "REST", "Auth", "PostgreSQL", "SQL"],
+    image: "/projects/jobtrack-1.png",
     links: {
       caseStudy: "/projects/jobtrack-api",
       repo: "https://github.com/Sundog28",
@@ -63,6 +67,7 @@ const PROJECTS: Project[] = [
       "Packaged into a presentation-friendly and recruiter-friendly project.",
     ],
     tech: ["Python", "Pandas", "scikit-learn", "Jupyter"],
+    image: "/projects/mlcapstone-1.png",
     links: {
       caseStudy: "/projects/ml-capstone",
       repo: "https://github.com/Sundog28",
@@ -84,9 +89,7 @@ export default function Projects() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 animated-bg opacity-20" />
-      </div>
+      <CyberBackground />
 
       <div className="page">
         <header className="fade-in-up">
@@ -99,10 +102,9 @@ export default function Projects() {
           </h1>
 
           <p className="mt-3 max-w-2xl text-white/75">
-            These projects are built to show structured engineering, clean UI,
-            practical backend design, and end-to-end thinking. Each one is
-            presented as a mini case study with clear outcomes and technology
-            choices.
+            These projects show structured engineering, practical problem
+            solving, and production-style design decisions across frontend,
+            backend, and machine learning work.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -132,7 +134,17 @@ export default function Projects() {
                 index === 1 ? "delay-150" : index === 2 ? "delay-300" : "",
               ].join(" ")}
             >
-              <div className="glow-inner card p-8 h-full">
+              <div className="glow-inner card h-full p-8">
+                {project.image && (
+                  <div className="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-black/10">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-56 w-full object-cover transition duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
+
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-bold">{project.title}</h2>
@@ -190,18 +202,28 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-12 card p-8 fade-in-up delay-300">
-          <h3 className="text-xl font-semibold">
-            Want the fast recruiter view?
-          </h3>
-          <p className="mt-2 text-white/75">
-            Open the one-page recruiter summary for quick access to the resume,
-            featured case studies, and contact info.
-          </p>
-          <div className="mt-5">
-            <a className="btn btn-primary" href="/recruiter">
-              Open Recruiter Mode
-            </a>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 fade-in-up delay-300">
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">What these projects show</h3>
+            <ul className="mt-4 space-y-2 text-white/75">
+              <li>• Structured codebases instead of one-off demos</li>
+              <li>• Clear separation of UI, logic, and data flow</li>
+              <li>• Practical stack choices aligned to the project goal</li>
+              <li>• Recruiter-friendly case study thinking</li>
+            </ul>
+          </div>
+
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Need the fast version?</h3>
+            <p className="mt-2 text-white/75">
+              Open the one-page recruiter summary for quick access to the
+              resume, featured case studies, and contact info.
+            </p>
+            <div className="mt-5">
+              <a className="btn btn-primary" href="/recruiter">
+                Open Recruiter Mode
+              </a>
+            </div>
           </div>
         </div>
       </div>

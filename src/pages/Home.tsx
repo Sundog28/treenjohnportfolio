@@ -1,4 +1,5 @@
 import React from "react";
+import CyberBackground from "../components/CyberBackground";
 
 export default function Home() {
   return (
@@ -108,6 +109,40 @@ Open to remote opportunities`}</div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 fade-in-up delay-300">
           <div className="card p-8">
+            <h3 className="text-xl font-semibold">Tech Stack Matrix</h3>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <StackGroup
+                title="Frontend"
+                items={["React", "TypeScript", "Tailwind", "Vite"]}
+              />
+              <StackGroup
+                title="Backend"
+                items={["Go", "REST APIs", "Auth", "Routing"]}
+              />
+              <StackGroup
+                title="Data / ML"
+                items={["Python", "Pandas", "scikit-learn", "Jupyter"]}
+              />
+              <StackGroup
+                title="Tools"
+                items={["Git", "GitHub", "PostgreSQL", "SQL"]}
+              />
+            </div>
+          </div>
+
+          <div className="card p-8">
+            <h3 className="text-xl font-semibold">Currently Building</h3>
+            <ul className="mt-4 space-y-2 text-white/80">
+              <li>• Expanding JobTrack API into a stronger portfolio backend</li>
+              <li>• Improving SkillForge UX and case-study presentation</li>
+              <li>• Making this portfolio more recruiter-friendly and polished</li>
+              <li>• Adding stronger full-stack and ML proof projects</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 fade-in-up delay-300">
+          <div className="card p-8">
             <h3 className="text-xl font-semibold">Architecture Snapshot</h3>
             <div className="mt-5 rounded-2xl border border-white/10 bg-black/10 p-6">
               <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
@@ -141,8 +176,8 @@ Open to remote opportunities`}</div>
                 </a>
               </p>
               <p className="mt-3 text-sm text-white/65">
-                Add a pinned contribution screenshot or GitHub stats image here
-                later for extra credibility.
+                Put a GitHub stats image or pinned contribution screenshot in
+                `public/github/github-stats.png` later if you want visual proof.
               </p>
             </div>
             <div className="mt-5">
@@ -157,26 +192,18 @@ Open to remote opportunities`}</div>
             </div>
           </div>
         </div>
+
+        <div className="mt-12 card p-8 fade-in-up delay-300">
+          <h3 className="text-xl font-semibold">Timeline</h3>
+          <div className="mt-6 grid gap-4 md:grid-cols-4">
+            <TimelineItem title="SkillForge" text="Built a cleaner learning tracker with reusable UI." />
+            <TimelineItem title="JobTrack API" text="Designed a production-style Go backend structure." />
+            <TimelineItem title="ML Capstone" text="Completed end-to-end preprocessing, training, and evaluation." />
+            <TimelineItem title="Portfolio Redesign" text="Turned the site into a futuristic recruiter-ready portfolio." />
+          </div>
+        </div>
       </div>
     </section>
-  );
-}
-
-function CyberBackground() {
-  return (
-    <div className="pointer-events-none absolute inset-0 -z-10">
-      <div className="cyber-bg">
-        <div className="cyber-noise" />
-        <div className="cyber-grid" />
-        <div className="cyber-scanlines" />
-        <div className="cyber-lines" />
-        <div className="cyber-orb one" />
-        <div className="cyber-orb two" />
-        <div className="cyber-orb three" />
-        <div className="cyber-beam hidden md:block" />
-        <div className="cyber-ring hidden md:block" />
-      </div>
-    </div>
   );
 }
 
@@ -199,6 +226,21 @@ function Kpi({ title, desc }: { title: string; desc: string }) {
   );
 }
 
+function StackGroup({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <h4 className="font-semibold">{title}</h4>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {items.map((item) => (
+          <span key={item} className="tag">
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Node({ label }: { label: string }) {
   return (
     <div className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 font-semibold">
@@ -209,4 +251,14 @@ function Node({ label }: { label: string }) {
 
 function Arrow() {
   return <div className="text-xl font-bold text-[var(--accent)]">→</div>;
+}
+
+function TimelineItem({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+      <div className="text-sm uppercase tracking-widest text-white/60">Milestone</div>
+      <div className="mt-2 font-semibold">{title}</div>
+      <div className="mt-2 text-sm text-white/75">{text}</div>
+    </div>
+  );
 }
