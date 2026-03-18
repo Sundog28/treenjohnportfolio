@@ -1,5 +1,7 @@
 import React from "react";
 import CyberBackground from "../components/CyberBackground";
+import SystemStatus from "../components/SystemStatus";
+import DiagnosticsPanel from "../components/DiagnosticsPanel";
 
 export default function Home() {
   return (
@@ -7,7 +9,9 @@ export default function Home() {
       <CyberBackground />
 
       <div className="page">
-        <div className="relative">
+        <SystemStatus />
+
+        <div className="mt-8 relative">
           <div className="pointer-events-none absolute -top-8 right-6 hidden md:block">
             <Pill label="React" className="float-slow" />
           </div>
@@ -38,95 +42,57 @@ export default function Home() {
               </p>
 
               <p className="mt-3 text-white/70">
-                Open to remote junior or entry full-stack roles. Available
-                immediately.
+                Open to remote junior or entry full-stack roles. Available immediately.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <a className="btn btn-primary" href="/projects">
-                  View Projects
-                </a>
-                <a className="btn" href="/resume">
-                  Resume
-                </a>
-                <a className="btn" href="/recruiter">
-                  Recruiter Mode
-                </a>
-                <a className="btn" href="/contact">
-                  Contact
-                </a>
+                <a className="btn btn-primary" href="/projects">View Projects</a>
+                <a className="btn" href="/resume">Resume</a>
+                <a className="btn" href="/recruiter">Recruiter Mode</a>
+                <a className="btn" href="/contact">Contact</a>
               </div>
 
               <div className="mt-10 grid gap-4 md:grid-cols-3">
-                <Kpi
-                  title="3+ Production Projects"
-                  desc="Deployed apps & APIs with real structure."
-                />
-                <Kpi
-                  title="REST APIs Built in Go"
-                  desc="Auth, validation, clean services/handlers."
-                />
-                <Kpi
-                  title="ML Models Deployed"
-                  desc="Practical pipelines → demo-ready delivery."
-                />
+                <Kpi title="3+ Production Projects" desc="Deployed apps & APIs with real structure." />
+                <Kpi title="REST APIs Built in Go" desc="Auth, validation, clean services/handlers." />
+                <Kpi title="ML Models Deployed" desc="Practical pipelines → demo-ready delivery." />
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 fade-in-up delay-150">
-          <div className="card p-8">
-            <h3 className="text-xl font-semibold">What I bring to a team</h3>
-            <ul className="mt-4 space-y-2 text-white/80">
-              <li>• Clean readable code over clever code</li>
-              <li>• Production-style architecture even in personal projects</li>
-              <li>• Fast learner across frontend, backend, and ML</li>
-              <li>• Strong documentation and structured project design</li>
-            </ul>
-          </div>
-
           <div className="terminal">
             <div className="terminal-bar">
               <div className="terminal-dot" />
               <div className="terminal-dot" />
               <div className="terminal-dot" />
             </div>
-            <div className="terminal-body">{`john@portfolio:~$ whoami
+            <div className="terminal-body">{`john@treenos:~$ whoami
 Full-Stack & ML Engineer
 
-john@portfolio:~$ strengths
+john@treenos:~$ strengths
 - React frontends
 - Go backend APIs
 - PostgreSQL + structured data design
 - Practical ML demos
 - Strong project organization
 
-john@portfolio:~$ status
-Open to remote opportunities`}</div>
+john@treenos:~$ status
+OPEN TO REMOTE OPPORTUNITIES`}</div>
           </div>
+
+          <DiagnosticsPanel />
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 fade-in-up delay-300">
           <div className="card p-8">
             <h3 className="text-xl font-semibold">Tech Stack Matrix</h3>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <StackGroup
-                title="Frontend"
-                items={["React", "TypeScript", "Tailwind", "Vite"]}
-              />
-              <StackGroup
-                title="Backend"
-                items={["Go", "REST APIs", "Auth", "Routing"]}
-              />
-              <StackGroup
-                title="Data / ML"
-                items={["Python", "Pandas", "scikit-learn", "Jupyter"]}
-              />
-              <StackGroup
-                title="Tools"
-                items={["Git", "GitHub", "PostgreSQL", "SQL"]}
-              />
+              <StackGroup title="Frontend" items={["React", "TypeScript", "Tailwind", "Vite"]} />
+              <StackGroup title="Backend" items={["Go", "REST APIs", "Auth", "Routing"]} />
+              <StackGroup title="Data / ML" items={["Python", "Pandas", "scikit-learn", "Jupyter"]} />
+              <StackGroup title="Tools" items={["Git", "GitHub", "PostgreSQL", "SQL"]} />
             </div>
           </div>
 
@@ -154,8 +120,7 @@ Open to remote opportunities`}</div>
               </div>
             </div>
             <p className="mt-4 text-sm text-white/70">
-              I design projects with clear separation between UI, backend logic,
-              and persistence.
+              I design projects with clear separation between UI, backend logic, and persistence.
             </p>
           </div>
 
@@ -167,26 +132,16 @@ Open to remote opportunities`}</div>
             <div className="mt-5 rounded-2xl border border-white/10 bg-black/10 p-6">
               <p className="text-white/75">
                 GitHub:{" "}
-                <a
-                  href="https://github.com/Sundog28"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="https://github.com/Sundog28" target="_blank" rel="noreferrer">
                   github.com/Sundog28
                 </a>
               </p>
               <p className="mt-3 text-sm text-white/65">
-                Put a GitHub stats image or pinned contribution screenshot in
-                `public/github/github-stats.png` later if you want visual proof.
+                Add a GitHub stats image later to public/github/github-stats.png if you want a live panel.
               </p>
             </div>
             <div className="mt-5">
-              <a
-                className="btn btn-primary"
-                href="https://github.com/Sundog28"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="btn btn-primary" href="https://github.com/Sundog28" target="_blank" rel="noreferrer">
                 Open GitHub
               </a>
             </div>
@@ -209,9 +164,7 @@ Open to remote opportunities`}</div>
 
 function Pill({ label, className = "" }: { label: string; className?: string }) {
   return (
-    <div
-      className={`rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 backdrop-blur ${className}`}
-    >
+    <div className={`rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85 backdrop-blur ${className}`}>
       {label}
     </div>
   );
@@ -232,9 +185,7 @@ function StackGroup({ title, items }: { title: string; items: string[] }) {
       <h4 className="font-semibold">{title}</h4>
       <div className="mt-3 flex flex-wrap gap-2">
         {items.map((item) => (
-          <span key={item} className="tag">
-            {item}
-          </span>
+          <span key={item} className="tag">{item}</span>
         ))}
       </div>
     </div>

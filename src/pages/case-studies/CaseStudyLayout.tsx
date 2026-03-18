@@ -21,26 +21,18 @@ export default function CaseStudyLayout(props: Props) {
       <div className="page">
         <div className="glow-frame fade-in-up">
           <div className="glow-inner card p-10">
-            <p className="text-sm tracking-widest uppercase text-white/60">
-              Case Study
-            </p>
-            <h1 className="mt-3 text-4xl font-extrabold md:text-5xl">
-              {props.title}
-            </h1>
+            <p className="text-sm tracking-widest uppercase text-white/60">Case Study</p>
+            <h1 className="mt-3 text-4xl font-extrabold md:text-5xl">{props.title}</h1>
             <p className="mt-3 max-w-3xl text-white/75">{props.subtitle}</p>
 
             <div className="mt-5 flex flex-wrap gap-2">
               {props.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
+                <span key={tag} className="tag">{tag}</span>
               ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a className="btn btn-primary" href="/projects">
-                Back to Projects
-              </a>
+              <a className="btn btn-primary" href="/projects">Back to Projects</a>
               {props.links.map((link) => (
                 <a
                   key={link.label}
@@ -60,11 +52,7 @@ export default function CaseStudyLayout(props: Props) {
           <div className="mt-10 grid gap-6 md:grid-cols-2 fade-in-up delay-150">
             {props.images.map((src) => (
               <div key={src} className="card overflow-hidden">
-                <img
-                  src={src}
-                  alt="Project screenshot"
-                  className="h-72 w-full object-cover"
-                />
+                <img src={src} alt="Project screenshot" className="h-72 w-full object-cover" />
               </div>
             ))}
           </div>

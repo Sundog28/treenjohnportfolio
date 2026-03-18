@@ -20,8 +20,7 @@ const PROJECTS: Project[] = [
   {
     slug: "skillforge",
     title: "SkillForge",
-    subtitle:
-      "Full-stack learning tracker with a polished UI and product-style structure.",
+    subtitle: "Full-stack learning tracker with a polished UI and product-style structure.",
     category: "Full Stack",
     highlights: [
       "Built a clean UX for tracking learning goals and progress.",
@@ -39,13 +38,12 @@ const PROJECTS: Project[] = [
   {
     slug: "jobtrack-api",
     title: "JobTrack API",
-    subtitle:
-      "Production-style Go REST API for tracking job applications, statuses, and notes.",
+    subtitle: "Production-style Go REST API for tracking job applications, statuses, and notes.",
     category: "Backend",
     highlights: [
       "RESTful CRUD endpoints with token-based authentication.",
       "Validation + clean separation across handlers, services, and storage.",
-      "Designed for maintainability, clarity, and real-world backend structure.",
+      "Designed for maintainability and real-world backend structure.",
     ],
     tech: ["Go", "REST", "Auth", "PostgreSQL", "SQL"],
     image: "/projects/jobtrack-1.png",
@@ -58,8 +56,7 @@ const PROJECTS: Project[] = [
   {
     slug: "ml-capstone",
     title: "ML Capstone",
-    subtitle:
-      "End-to-end ML project covering preprocessing, training, evaluation, and demo-ready output.",
+    subtitle: "End-to-end ML project covering preprocessing, training, evaluation, and demo-ready output.",
     category: "ML",
     highlights: [
       "Data cleaning and feature engineering pipeline.",
@@ -96,15 +93,12 @@ export default function Projects() {
           <p className="text-sm tracking-widest uppercase text-white/60">
             Case Studies & Builds
           </p>
-
           <h1 className="mt-3 text-4xl font-extrabold md:text-5xl">
             Projects
           </h1>
-
           <p className="mt-3 max-w-2xl text-white/75">
-            These projects show structured engineering, practical problem
-            solving, and production-style design decisions across frontend,
-            backend, and machine learning work.
+            These projects show structured engineering, practical problem solving,
+            and production-style design decisions across frontend, backend, and machine learning work.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -135,22 +129,32 @@ export default function Projects() {
               ].join(" ")}
             >
               <div className="glow-inner card h-full p-8">
-                {project.image && (
-                  <div className="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-black/10">
+                <div className="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-black/10">
+                  {project.image ? (
                     <img
                       src={project.image}
                       alt={project.title}
                       className="h-56 w-full object-cover transition duration-300 hover:scale-[1.02]"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                        const next = e.currentTarget.nextElementSibling as HTMLElement | null;
+                        if (next) next.style.display = "flex";
+                      }}
                     />
+                  ) : null}
+                  <div
+                    className="h-56 w-full items-center justify-center text-sm tracking-widest uppercase text-white/45"
+                    style={{ display: project.image ? "none" : "flex" }}
+                  >
+                    Project Preview
                   </div>
-                )}
+                </div>
 
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-bold">{project.title}</h2>
                     <p className="mt-2 text-white/75">{project.subtitle}</p>
                   </div>
-
                   <span className="tag">{project.category}</span>
                 </div>
 
@@ -174,25 +178,13 @@ export default function Projects() {
                       Case Study
                     </a>
                   )}
-
                   {project.links.repo && (
-                    <a
-                      className="btn"
-                      href={project.links.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a className="btn" href={project.links.repo} target="_blank" rel="noreferrer">
                       Repo
                     </a>
                   )}
-
                   {project.links.demo && project.links.demo.trim() !== "" && (
-                    <a
-                      className="btn"
-                      href={project.links.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a className="btn" href={project.links.demo} target="_blank" rel="noreferrer">
                       Live
                     </a>
                   )}
@@ -208,7 +200,7 @@ export default function Projects() {
             <ul className="mt-4 space-y-2 text-white/75">
               <li>• Structured codebases instead of one-off demos</li>
               <li>• Clear separation of UI, logic, and data flow</li>
-              <li>• Practical stack choices aligned to the project goal</li>
+              <li>• Practical stack choices aligned to project goals</li>
               <li>• Recruiter-friendly case study thinking</li>
             </ul>
           </div>
@@ -216,8 +208,8 @@ export default function Projects() {
           <div className="card p-8">
             <h3 className="text-xl font-semibold">Need the fast version?</h3>
             <p className="mt-2 text-white/75">
-              Open the one-page recruiter summary for quick access to the
-              resume, featured case studies, and contact info.
+              Open the one-page recruiter summary for quick access to the resume,
+              featured case studies, and contact info.
             </p>
             <div className="mt-5">
               <a className="btn btn-primary" href="/recruiter">

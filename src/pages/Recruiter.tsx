@@ -62,74 +62,42 @@ export default function Recruiter() {
                 </h1>
 
                 <p className="mt-3 max-w-2xl text-white/75">
-                  Full-Stack & ML Engineer focused on React + TypeScript
-                  frontend development, Go backend APIs, PostgreSQL data design,
-                  and practical machine learning projects in Python.
+                  Full-Stack & ML Engineer focused on React + TypeScript frontend development,
+                  Go backend APIs, PostgreSQL data design, and practical machine learning projects in Python.
                 </p>
 
                 <p className="mt-3 text-white/65">
-                  Open to remote junior, entry-level, and early-career
-                  full-stack, backend, or ML-adjacent software roles.
+                  Open to remote junior, entry-level, and early-career full-stack,
+                  backend, or ML-adjacent software roles.
                 </p>
               </div>
 
               <div className="mt-2 flex flex-wrap gap-3 md:mt-0">
-                <a className="btn btn-primary" href="/resume">
-                  Resume
-                </a>
-                <a className="btn" href="/projects">
-                  Projects
-                </a>
-                <a className="btn" href="/contact">
-                  Contact
-                </a>
-                <button
-                  className="btn no-print"
-                  onClick={() => window.print()}
-                  type="button"
-                >
+                <a className="btn btn-primary" href="/resume">Resume</a>
+                <a className="btn" href="/projects">Projects</a>
+                <a className="btn" href="/contact">Contact</a>
+                <button className="btn no-print" onClick={() => window.print()} type="button">
                   Print / Save PDF
                 </button>
               </div>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                className="btn"
-                href="https://github.com/Sundog28"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="btn" href="https://github.com/Sundog28" target="_blank" rel="noreferrer">
                 GitHub
               </a>
-
-              <a
-                className="btn"
-                href="https://www.linkedin.com/in/john-treen-629a81159/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="btn" href="https://www.linkedin.com/in/john-treen-629a81159/" target="_blank" rel="noreferrer">
                 LinkedIn
               </a>
-
               <a className="btn" href="mailto:treenjohnm@gmail.com">
                 Email
               </a>
             </div>
 
             <div className="mt-10 grid gap-4 md:grid-cols-3">
-              <Kpi
-                title="Go REST APIs"
-                desc="Auth, validation, clean service and storage structure."
-              />
-              <Kpi
-                title="Modern React UI"
-                desc="Responsive interfaces, reusable components, polished UX."
-              />
-              <Kpi
-                title="Practical ML"
-                desc="Pipelines, metrics, and demo-ready project delivery."
-              />
+              <Kpi title="Go REST APIs" desc="Auth, validation, clean service and storage structure." />
+              <Kpi title="Modern React UI" desc="Responsive interfaces, reusable components, polished UX." />
+              <Kpi title="Practical ML" desc="Pipelines, metrics, and demo-ready project delivery." />
             </div>
           </div>
         </div>
@@ -149,12 +117,7 @@ export default function Recruiter() {
                 <a className="btn btn-primary" href={project.links.caseStudy}>
                   Case Study
                 </a>
-                <a
-                  className="btn"
-                  href={project.links.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="btn" href={project.links.repo} target="_blank" rel="noreferrer">
                   Code
                 </a>
               </div>
@@ -176,22 +139,14 @@ export default function Recruiter() {
           <div className="card p-8">
             <h3 className="text-xl font-semibold">Download Center</h3>
             <div className="mt-4 flex flex-wrap gap-3">
-              <a className="btn btn-primary" href="/resume">
-                Resume Page
-              </a>
-              <a className="btn" href="/resume.pdf" target="_blank" rel="noreferrer">
-                Resume PDF
-              </a>
-              <button
-                className="btn"
-                onClick={() => window.print()}
-                type="button"
-              >
+              <a className="btn btn-primary" href="/resume">Resume Page</a>
+              <a className="btn" href="/resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
+              <button className="btn" onClick={() => window.print()} type="button">
                 Save One-Pager PDF
               </button>
             </div>
             <p className="mt-4 text-sm text-white/65">
-              Put `resume.pdf` inside your `public` folder if it is not already there.
+              Put resume.pdf inside your public folder if it is not already there.
             </p>
           </div>
         </div>
@@ -199,19 +154,14 @@ export default function Recruiter() {
         <div className="mt-10 card p-8 fade-in-up delay-300">
           <h3 className="text-xl font-semibold">What I’m looking for</h3>
           <p className="mt-2 text-white/75">
-            Remote or hybrid roles in full-stack engineering, backend
-            development with Go, or ML-focused software roles. I’m especially
-            interested in teams that value ownership, code quality, and
-            shipping practical products.
+            Remote or hybrid roles in full-stack engineering, backend development with Go,
+            or ML-focused software roles. I’m especially interested in teams that value
+            ownership, code quality, and shipping practical products.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <a className="btn btn-primary" href="/contact">
-              Contact Me
-            </a>
-            <a className="btn" href="/resume">
-              Download Resume
-            </a>
+            <a className="btn btn-primary" href="/contact">Contact Me</a>
+            <a className="btn" href="/resume">Download Resume</a>
           </div>
         </div>
       </div>
